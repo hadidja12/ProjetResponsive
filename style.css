@@ -8,6 +8,7 @@
 
 body{
     font-family: sans-serif;
+    
     background-color: #f0f2f5;
     display: flex;
     justify-content: center;
@@ -33,7 +34,7 @@ body{
 .card-image img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover;  /* dire a l'image de prendre l'espage en cas de modification*/
     
     display: block;
 }
@@ -41,7 +42,7 @@ body{
     flex: 1;
     padding: 40px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: center;
 }
 .card-content h2 {
@@ -69,7 +70,8 @@ body{
   padding: 6px 12px;
   font-size: 0.9rem;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 6px;
+  border: none;
 }
 
 .btn:hover {
@@ -80,9 +82,15 @@ body{
     .card {
         flex-direction: column; /* On empile l'image et le texte verticalement ! */
     }
+    .card image{
+        min-height: 200px;
+    }
 
     .card-content {
         padding: 20px; /* On réduit un peu les espaces sur petit écran */
+    }
+    .card-content h2{
+        font-size: 1.8rem;
     }
     
     body {
