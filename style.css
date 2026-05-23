@@ -1,100 +1,72 @@
-
 *{
+    margin: 0;
     padding: 0;
-    margin: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 40px 20px; /* Un peu d'espace autour de notre grille */
 }
 
+/* Le conteneur magique : On utilise CSS Grid */
+.cards-grid{
+    display: grid;
 
-
-body{
-    font-family: sans-serif;
-    
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    
-
-    
+    /* Crée automatiquement autant de colonnes de 300px minimum que possible */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;     /* Centre la grille sur les grands écrans */
 }
+
+/* Nos cartes (version verticale par défaut maintenant) */
 .card{
-    background: white;
     display: flex;
-    max-width: 800px;
-    width: 90%;
-    border-radius: 10px;
-    overflow: hidden;
+    flex-direction: column;    /* Image en haut, texte en bas */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* coin arrondit*/
 }
-.card image{
-    flex: 1;
+.card-image {
+  height: 200px; /* Hauteur fixe pour l'image */
+}
 
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.card-image img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  /* dire a l'image de prendre l'espage en cas de modification*/
-    
-    display: block;
-}
-.card-content{
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
+.card-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Permet au contenu de remplir la carte équitablement */
 }
 .card-content h2 {
-  font-size: 2.2rem;
-  line-height: 1.1;
+  font-size: 1.6rem;
   margin-top: 0;
-  margin-bottom: 15px;
-  color: red;
-  /* color: #000000; */
+  margin-bottom: 12px;
 }
-
-.cord-p {
-  color: #333333;
-  
-  font-size: 1.1rem;
-  line-height: 1.5;
+.card-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.4;
   margin-bottom: 20px;
+  flex-grow: 1; /* Aligne les boutons en bas même si les textes n'ont pas la même longueur */
 }
-
-/* Style du bouton "En savoir plus" */
 .btn {
-  align-self: flex-start; /* Évite que le bouton prenne toute la largeur */
-  background-color: red;
-  border: 1px solid #999;
-  padding: 6px 12px;
+  align-self: flex-start;
+  background-color: #ff0000; /* Ton bouton rouge */
+  color: white;
+  border: none;
+  padding: 8px 16px;
   font-size: 0.9rem;
   cursor: pointer;
   border-radius: 6px;
-  border: none;
+}
+.btn:hover{
+    background: blue;
 }
 
-.btn:hover {
-  background-color: blue;
-}
-
-@media (max-width: 768px) {
-    .card {
-        flex-direction: column; /* On empile l'image et le texte verticalement ! */
-    }
-    .card image{
-        min-height: 200px;
-    }
-
-    .card-content {
-        padding: 20px; /* On réduit un peu les espaces sur petit écran */
-    }
-    .card-content h2{
-        font-size: 1.8rem;
-    }
-    
-    body {
-        height: auto; /* On laisse le contenu défiler naturellement sur mobile */
-        padding: 20px 0;
-    }
-}
